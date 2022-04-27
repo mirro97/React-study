@@ -1,10 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.nav{
+  background-color: #dee2e6;
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.title {
+  color: #339af0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
