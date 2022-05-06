@@ -1,52 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
-.App {
-  text-align: center;
+@font-face {
+  font-family: apple-normal;
+  src: url(../src/assets/fonts/AppleSDGothicNeoM.3a44ffb1.ttf);
 }
 
+@font-face {
+  font-family: apple-bold;
+  src: url(../src/assets/fonts/AppleSDGothicNeoB.018066fb.ttf);
+}
 
 body {
   font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  font-family: apple-normal;
 }
 
-.nav{
-  background-color: #dee2e6;
+.nav {
+  background-color: #f1f4f7;
   width: 100%;
   display: flex;
-  padding: 20px;
+  padding: 10px;
   font-weight: 600;
+  font-size: 18px;
 }
 
-.title {
-  color: #339af0;
+.nav h2 {
+  font-size: 18px;
+  color: #188eee;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.list {
+  padding: 0 18px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e5;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.list-bottom {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.list-bottom span {
+  margin-right: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.regist,
+.like {
+  display: flex;
+  align-items: center;
 }
