@@ -4,21 +4,37 @@
   text-align: center;
 }
 
-
 body {
   font-family: "Noto Sans KR", sans-serif;
 }
 
-.nav{
+.nav {
   background-color: #dee2e6;
   width: 100%;
   display: flex;
-  padding: 20px;
+  padding: 10px;
   font-weight: 600;
+  font-size: 18px;
 }
 
-.title {
+.nav h2 {
+  font-size: 18px;
   color: #339af0;
+}
+
+.list {
+  padding: 0 18px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.list-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.list-bottom span {
+  margin-right: 12px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

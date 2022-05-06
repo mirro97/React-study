@@ -1,19 +1,32 @@
 import "./App.css";
+import { useState } from "react";
 
 // 리액트는 데이터 바인딩이 굉장히 쉬움
 // 중괄호{}를 사용하면 손쉽게 변수를 넣을 수 있음
 
 function App() {
-  let posts = "첫번째 게시글";
-  let image =
-    "https://img.huffingtonpost.com/asset/6168c6ce2000008f3f8d05a7.jpeg?ops=scalefit_720_noupscale";
+  // let [작명(=데이터를 담고있음), 작명(=state의 변경을 도와주는 함수)] = useState(보관할 자료);
+  // state 는 값이 변경되면 자동으로 html이 재랜더링이 됨!
+  // 자주 변경되는 html 부분은 state로 만들어 놓으면 된다
+  let [test, setTest] = useState("아아메가 깔끔한 카페 추천");
+  let [title, setTitle] = useState([
+    "페퍼로니 피자가 작살나는 가게",
+    "육즙 잘잘 벌집 삼겹살 맛집",
+    "엄마가 극찬한 밀크티 맛집",
+  ]);
+  let writer = "뉴욕치킨";
   return (
     <div className="App">
       <div className="nav">
-        <div className="title">리액트 Blog</div>
+        <h2>리액트 Blog</h2>
       </div>
-      <span style={{ fontSize: "17px", color: "#495057" }}>{posts}</span>
-      <img src={image}></img>
+      <div className="list">
+        <h3>{title}</h3>
+        <div className="list-bottom">
+          <span>{writer}</span>
+          <p>2022년 5월 7일</p>
+        </div>
+      </div>
     </div>
   );
 }
