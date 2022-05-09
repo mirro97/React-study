@@ -15,7 +15,7 @@ function App() {
       writer: "뉴욕치킨",
     },
     {
-      title: "육즙 잘잘 벌집 삼겹살 맛집",
+      title: "강력한 육즙 잘잘 벌집 삼겹살 맛집",
       date: "2022-03-29",
       writer: "뉴욕치킨",
     },
@@ -33,12 +33,36 @@ function App() {
       <div className="nav">
         <h2>리액트 Blog</h2>
       </div>
+
+      <button
+        className="btn"
+        onClick={() => {
+          let copy = [...title];
+
+          copy.sort(function (a, b) {
+            let x = a.title.toLowerCase();
+            let y = b.title.toLowerCase();
+
+            if (x < y) return -1;
+
+            if (x > y) return 1;
+
+            return 0;
+          });
+
+          setTitle(copy);
+        }}
+      >
+        정렬
+      </button>
+
       <div className="list">
         <h3>{title[0].title}</h3>
         <div className="list-bottom">
           <div className="regist">
             <span>{title[0].writer}</span>
-            <p>{title[0].date}</p>
+            <span className="divide">|</span>
+            <span>{title[0].date}</span>
           </div>
           <div className="like">
             {/* onClick 안에는 함수를 넣어야함 */}
@@ -58,7 +82,8 @@ function App() {
         <div className="list-bottom">
           <div className="regist">
             <span>{title[1].writer}</span>
-            <p>{title[1].date}</p>
+            <span className="divide">|</span>
+            <span>{title[1].date}</span>
           </div>
           <div className="like">
             <span>💙</span>
@@ -71,7 +96,8 @@ function App() {
         <div className="list-bottom">
           <div className="regist">
             <span>{title[2].writer}</span>
-            <p>{title[2].date}</p>
+            <span className="divide">|</span>
+            <span>{title[2].date}</span>
           </div>
           <div className="like">
             <span>💙</span>
