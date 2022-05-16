@@ -71,7 +71,7 @@ function App() {
                 setCount(likeCount + 1);
               }}
             >
-              💙
+              💚
             </span>
             <p>{likeCount}</p>
           </div>
@@ -86,7 +86,7 @@ function App() {
             <span>{title[1].date}</span>
           </div>
           <div className="like">
-            <span>💙</span>
+            <span>💚</span>
             <p>{likeCount}</p>
           </div>
         </div>
@@ -100,10 +100,33 @@ function App() {
             <span>{title[2].date}</span>
           </div>
           <div className="like">
-            <span>💙</span>
+            <span>💚</span>
             <p>{likeCount}</p>
           </div>
         </div>
+      </div>
+
+      <Modal />
+    </div>
+  );
+}
+
+function Modal() {
+  let title = "엄청난 모달입니다";
+  let writer = "뉴욕치킨";
+  let date = "2022-05-16";
+  let content =
+    "이건 모달 내용이구요. 엄청나요! 리액트에서 사용하는 컴포넌트입니다.  \n 굉장해! 엄청나!";
+
+  return (
+    <div className="modal">
+      <h4 className="header">{title}</h4>
+      <div className="content">
+        <div className="content-top">
+          <span>{writer}</span>
+          <p>{date}</p>
+        </div>
+        <p>{content}</p>
       </div>
     </div>
   );

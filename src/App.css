@@ -12,7 +12,7 @@
 
 body {
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-family: apple-normal;
   padding: 0 22px;
 }
@@ -27,7 +27,6 @@ body {
   display: flex;
   padding: 27px 0;
   font-weight: 600;
-  font-size: 18px;
 }
 
 .nav h2 {
@@ -41,13 +40,13 @@ body {
 }
 
 .list {
-  padding: 24px 0;
+  padding: 20px 0;
   text-align: left;
   border-bottom: 1px solid #e0e0e5;
 }
 
 .list h3 {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
@@ -63,8 +62,34 @@ body {
 
 .regist,
 .like {
-  font-size: 15px;
+  font-size: 14px;
   color: #8f929b;
   display: flex;
   align-items: center;
+}
+
+/* modal css */
+.modal {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.header {
+  font-size: 17px;
+  font-weight: 400;
+  background-color: rgb(63, 133, 63);
+  color: #fff;
+  padding: 13px 15px;
+}
+
+.content {
+  background-color: #f7f7f7;
+  padding: 22px 15px;
+  white-space: pre-line;
+}
+
+.content-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
