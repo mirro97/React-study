@@ -8,26 +8,29 @@ function App() {
   // let [작명(=데이터를 담고있음), 작명(=state의 변경을 도와주는 함수)] = useState(보관할 자료);
   // state 는 값이 변경되면 자동으로 html이 재랜더링이 됨!
   // 자주 변경되는 html 부분은 state로 만들어 놓으면 된다
-  let [title, setTitle] = useState([
+  let [content, setContent] = useState([
     {
       title: "페퍼로니 피자가 작살나는 가게",
       date: "2022-03-21",
       writer: "뉴욕치킨",
+      likeCount: 12,
     },
     {
       title: "강력한 육즙 잘잘 벌집 삼겹살 맛집",
       date: "2022-03-29",
       writer: "뉴욕치킨",
+      likeCount: 2,
     },
     {
       title: "엄마가 극찬한 밀크티 맛집",
       date: "2022-04-6",
       writer: "뉴욕치킨",
+      likeCount: 5,
     },
   ]);
 
-  let [likeCount, setCount] = useState(0);
   let [modal, setModal] = useState(false);
+  let [titleIndex, setTitleIndex] = useState(1);
 
   return (
     <div className="App">
@@ -38,11 +41,11 @@ function App() {
       <button
         className="btn"
         onClick={() => {
-          let copy = [...title];
+          let copy = [...content];
 
           copy.sort(function (a, b) {
-            let x = a.title.toLowerCase();
-            let y = b.title.toLowerCase();
+            let x = a.content.toLowerCase();
+            let y = b.content.toLowerCase();
 
             if (x < y) return -1;
 
@@ -51,89 +54,84 @@ function App() {
             return 0;
           });
 
-          setTitle(copy);
+          setContent(copy);
         }}
       >
         정렬
       </button>
 
-      <div className="list">
-        <h3
-          onClick={() => {
-            setModal(!modal);
-          }}
-        >
-          {title[0].title}
-        </h3>
-        <div className="list-bottom">
-          <div className="regist">
-            <span>{title[0].writer}</span>
-            <span className="divide">|</span>
-            <span>{title[0].date}</span>
-          </div>
-          <div className="like">
-            {/* onClick 안에는 함수를 넣어야함 */}
-            <span
+      {/* 중괄호 안에서는 for문을 사용하지 못함 -> map함수를 써야함 */}
+      {content.map(function (data, index) {
+        return (
+          <div className="list" key={index}>
+            <h3
               onClick={() => {
-                setCount(likeCount + 1);
+                setModal(!modal);
+                setTitleIndex(index);
               }}
             >
-              💚
-            </span>
-            <p>{likeCount}</p>
+              <span className="index">{index + 1}</span>
+              {data.title}
+            </h3>
+            <div className="list-bottom">
+              <div className="regist">
+                <span>{data.writer}</span>
+                <span className="divide">|</span>
+                <span>{data.date}</span>
+              </div>
+              <div className="like">
+                {/* onClick 안에는 함수를 넣어야함 */}
+                <span
+                  onClick={() => {
+                    let copy = [...content];
+                    copy[index].likeCount = content[index].likeCount + 1;
+                    setContent(copy);
+                  }}
+                >
+                  💚
+                </span>
+                <p>{data.likeCount}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="list">
-        <h3>{title[1].title}</h3>
-        <div className="list-bottom">
-          <div className="regist">
-            <span>{title[1].writer}</span>
-            <span className="divide">|</span>
-            <span>{title[1].date}</span>
-          </div>
-          <div className="like">
-            <span>💚</span>
-            <p>{likeCount}</p>
-          </div>
-        </div>
-      </div>
-      <div className="list">
-        <h3>{title[2].title}</h3>
-        <div className="list-bottom">
-          <div className="regist">
-            <span>{title[2].writer}</span>
-            <span className="divide">|</span>
-            <span>{title[2].date}</span>
-          </div>
-          <div className="like">
-            <span>💚</span>
-            <p>{likeCount}</p>
-          </div>
-        </div>
-      </div>
+        );
+      })}
 
-      {modal === true ? <Modal /> : null}
+      {modal === true ? (
+        <Modal
+          setContent={setContent}
+          contentData={content}
+          index={titleIndex}
+        />
+      ) : null}
     </div>
   );
 }
 
-function Modal() {
-  let title = "엄청난 모달입니다";
-  let writer = "뉴욕치킨";
-  let date = "2022-05-16";
+function Modal(props) {
   let content =
     "이건 모달 내용이구요. 엄청나요! 리액트에서 사용하는 컴포넌트입니다.  \n 굉장해! 엄청나!";
 
   return (
     <div className="modal">
-      <h4 className="header">{title}</h4>
+      <h4 className="header">{props.contentData[props.index].title}</h4>
       <div className="content">
         <div className="content-top">
-          <span>{writer}</span>
-          <p>{date}</p>
+          <span>{props.contentData[props.index].writer}</span>
+          <p>{props.contentData[props.index].date}</p>
         </div>
         <p>{content}</p>
+
+        <button
+          className="btn"
+          onClick={() => {
+            let copy = [...props.contentData];
+            copy[0].title = "시카고 피자가 굉장하게 작살나는 가게";
+            props.setContent(copy);
+          }}
+        >
+          글수정
+        </button>
       </div>
     </div>
   );
