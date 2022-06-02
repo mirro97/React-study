@@ -27,6 +27,7 @@ function App() {
   ]);
 
   let [likeCount, setCount] = useState(0);
+  let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -57,7 +58,13 @@ function App() {
       </button>
 
       <div className="list">
-        <h3>{title[0].title}</h3>
+        <h3
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          {title[0].title}
+        </h3>
         <div className="list-bottom">
           <div className="regist">
             <span>{title[0].writer}</span>
@@ -106,7 +113,7 @@ function App() {
         </div>
       </div>
 
-      <Modal />
+      {modal === true ? <Modal /> : null}
     </div>
   );
 }
