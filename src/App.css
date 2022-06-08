@@ -73,6 +73,14 @@ body {
   align-items: center;
 }
 
+/* input css */
+.input-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 /* modal css */
 .modal {
   border-radius: 3px;

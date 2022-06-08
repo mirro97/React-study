@@ -15,3 +15,15 @@ a:hover {
   cursor: pointer;
   background-color: rgb(226, 226, 226);
 }
+
+input {
+  padding: 9px 13px;
+  border: 1px solid #e0e0e5;
+  margin-right: 5px;
+  border-radius: 2px;
+  outline-color: #55b969b2;
+}
+
+input:focus {
+  /* border: 1px solid #55b969; */
+}
