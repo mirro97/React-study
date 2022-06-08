@@ -97,6 +97,12 @@ function App() {
         );
       })}
 
+      <div className="input-container">
+        <input type="text" />
+        <button className="btn">발행</button>
+      </div>
+
+      {/* state 만드는 곳은 state 사용하는 컴포넌트들 중 가장 최상위 컴포넌트 */}
       {modal === true ? (
         <Modal
           setContent={setContent}
