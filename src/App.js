@@ -169,6 +169,7 @@ function App() {
       {modal === true ? (
         <Modal
           setContent={setContent}
+          setModal={setModal}
           contentData={content}
           index={titleIndex}
         />
@@ -180,7 +181,9 @@ function App() {
 function Modal(props) {
   return (
     <div className="modal">
-      <h4 className="header">{props.contentData[props.index].title}</h4>
+      <h4 className="header">
+        <span>{props.contentData[props.index].title}</span>
+         <button className="close" onClick={()=> {props.setModal(false)}}>x</button></h4>
       <div className="content">
         <div className="content-top">
           <span>{props.contentData[props.index].writer}</span>
