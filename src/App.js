@@ -11,18 +11,22 @@ function App() {
   let [content, setContent] = useState([
     {
       title: "페퍼로니 피자가 작살나는 가게",
+      description: "피자 개맛있는 집입니다,,, 대대손손 물려줘야합니다",
       date: "2022-03-21",
       writer: "뉴욕치킨",
       likeCount: 12,
     },
     {
       title: "강력한 육즙 잘잘 벌집 삼겹살 맛집",
+      description:
+        "삼겹살먹으러와서냉면두그릇이나해치웠는데어떻게생각하는부분?",
       date: "2022-03-29",
       writer: "뉴욕치킨",
       likeCount: 2,
     },
     {
       title: "엄마가 극찬한 밀크티 맛집",
+      description: "밀크티 냠냠긋....",
       date: "2022-04-6",
       writer: "뉴욕치킨",
       likeCount: 5,
@@ -31,6 +35,36 @@ function App() {
 
   let [modal, setModal] = useState(false);
   let [titleIndex, setTitleIndex] = useState(1);
+  let [inputValue, setInputValue] = useState({
+    title: "",
+    date: "2022-03-29",
+    description: "",
+    writer: "",
+    likeCount: 0,
+  });
+
+  const { title, description, writer } = inputValue;
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+
+  function getDate() {
+    var today = new Date();
+
+    var year = today.getFullYear();
+    var month = ("0" + (today.getMonth() + 1)).slice(-2);
+    var day = ("0" + today.getDate()).slice(-2);
+
+    var dateString = year + "-" + month + "-" + day;
+
+    return dateString;
+  }
 
   return (
     <div className="App">
@@ -98,8 +132,37 @@ function App() {
       })}
 
       <div className="input-container">
-        <input type="text" />
-        <button className="btn">발행</button>
+        <label htmlFor="title">
+          제목
+          <input id="title" name="title" type="text" onChange={onChange} />
+        </label>
+
+        <label htmlFor="description">
+          내용
+          <input
+            id="description"
+            name="description"
+            type="text"
+            onChange={onChange}
+          />
+        </label>
+
+        <label htmlFor="writer">
+          작성자
+          <input id="writer" name="writer" type="text" onChange={onChange} />
+        </label>
+
+        <button
+          className="btn"
+          onClick={() => {
+            let copy = { ...inputValue };
+            copy.date = getDate();
+            setInputValue(copy);
+            setContent([...content, inputValue]);
+          }}
+        >
+          발행
+        </button>
       </div>
 
       {/* state 만드는 곳은 state 사용하는 컴포넌트들 중 가장 최상위 컴포넌트 */}
@@ -115,9 +178,6 @@ function App() {
 }
 
 function Modal(props) {
-  let content =
-    "이건 모달 내용이구요. 엄청나요! 리액트에서 사용하는 컴포넌트입니다.  \n 굉장해! 엄청나!";
-
   return (
     <div className="modal">
       <h4 className="header">{props.contentData[props.index].title}</h4>
@@ -126,7 +186,7 @@ function Modal(props) {
           <span>{props.contentData[props.index].writer}</span>
           <p>{props.contentData[props.index].date}</p>
         </div>
-        <p>{content}</p>
+        <p>{props.contentData[props.index].description}</p>
 
         <button
           className="btn"
@@ -136,7 +196,7 @@ function Modal(props) {
             props.setContent(copy);
           }}
         >
-          글수정
+          제목 수정
         </button>
       </div>
     </div>
