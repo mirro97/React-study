@@ -18,7 +18,8 @@ body {
 }
 
 .App {
-  max-width: 965px;
+  position: relative;
+  max-width: 785px;
   margin: auto;
 }
 
@@ -91,8 +92,14 @@ body {
 
 /* modal css */
 .modal {
+  width: 450px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 3px;
-  overflow: hidden;
+  overflow: hidden;-webkit-box-shadow: 1px 6px 14px -5px rgba(77,77,77,0.63); 
+  box-shadow: 1px 6px 14px -5px rgba(77,77,77,0.63);
 }
 
 .header {
@@ -101,6 +108,10 @@ body {
   background-color: rgb(63, 133, 63);
   color: #fff;
   padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
 }
 
 .content {
@@ -119,3 +130,15 @@ body {
   margin-top: 12px;
   background-color: #cee0cb;
 }
+.modal .close {
+  border: none;
+  border-radius: 50%;
+  padding: 2px 8px;
+  color: #fff;
+  font-size: 20px;
+  background-color:transparent;
+}
+
+.modal .close:hover {
+  background-color: #c2c2c28b;
+} 
