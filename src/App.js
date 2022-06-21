@@ -98,6 +98,7 @@ function App() {
       {content.map(function (data, index) {
         return (
           <div className="list" key={index}>
+            <div className="list-top">
             <h3
               onClick={() => {
                 setModal(!modal);
@@ -106,7 +107,16 @@ function App() {
             >
               <span className="index">{index + 1}</span>
               {data.title}
-            </h3>
+            </h3>  
+            <button className="delete" onClick={()=>{
+              let copy = [...content]
+
+              copy.splice(index,1)
+
+              setContent(copy)
+            }}>삭제</button>
+            </div>
+            
             <div className="list-bottom">
               <div className="regist">
                 <span>{data.writer}</span>
